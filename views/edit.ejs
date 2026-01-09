@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit the post</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="post">
+         
+         <div class="specific_post">
+
+                <img src="/<%=post.image%>" alt="img">
+                <p> 
+                    <%= post.content %>
+                </p>
+                <div>
+                    <button>likes: <%= post.likes %></button> &nbsp;
+                    <a href=""></a>
+               </div>
+
+         </div>
+        
+
+        <form method="POST"  action="/home/<%= post.id%>?_method=PATCH"  enctype="multipart/form-data">
+             <p>Edit your content here : </p>
+             <textarea name="content" required rows="9" cols="40"><%= post.content %></textarea>
+             <br>
+             <p>Upload your new image :</p>
+             <input type="file" name="image"  >
+             <button>Submit</button>
+        </form>
+            
+ 
+    </div>
+</body>
+</html>

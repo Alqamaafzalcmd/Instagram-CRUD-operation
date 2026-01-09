@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Instagram</h1>
+    <div class="profile">
+        <img src="/<%= user.image %>" alt="img">
+        <div class="profile_content">
+            <h3>
+                <%= user.name %>
+            </h3>
+            <p>Posts: <%= user.post %>
+            </p> &nbsp;&nbsp;&nbsp;
+            <p>followers: <%= user.followers %>
+            </p> &nbsp;&nbsp;&nbsp;
+            <p>following: <%= user.following %>
+            </p>
+        </div>
+    </div>
+
+    <div class="post">
+        <% let i = 1; %>
+        <%for(let post of posts) {%>
+            <div class="specific_post">
+                <img src="/<%=post.image%>" alt="image">
+                <p> 
+                    <%= post.content %>
+                </p>
+                <div>
+                    <button>likes: <%= post.likes %></button> &nbsp;
+                    <!-- <button>comment: <%= post.comments %></button> &nbsp; -->
+                     <a href="http://localhost:8080/home/<%= post.id %>"><button>View in detail</button></a> &nbsp;
+                     <form action="/home/<%= post.id%>/?_method=DELETE" method="post" enctype="multipart/form-data" style="display: inline-block;"><button type="submit">Delete</button></form> &nbsp;
+                     <a href="http://localhost:8080/home/<%= post.id %>/edit"><button>Edit</button></a>
+                </div>
+                <hr>
+
+            </div>
+
+            <%}%>
+            <br>
+            <button><a href="http://localhost:8080/home/new" text-decorration="none">+ New Post</a></button>
+
+    </div>
+
+</body>
+
+</html>
